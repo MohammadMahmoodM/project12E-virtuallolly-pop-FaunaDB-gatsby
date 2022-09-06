@@ -1,3 +1,4 @@
+import { navigate } from "gatsby";
 import React from "react"
 import Header from "../components/Header";
 import { Lolly } from '../components/Lolly';
@@ -11,6 +12,13 @@ const Home = () => {
                 <div><Lolly fillLollyTop="#d52358" fillLollyMiddle="#e95946" fillLollyBottom="#deaa43" /></div>
                 <div><Lolly fillLollyTop="red" fillLollyMiddle="green" fillLollyBottom="blue" /></div>
             </div>
+            <input type="button" value="Create New Lolly"
+                onClick={
+                    ()=>{
+                        navigate("/createNew");
+                    }
+                }
+            ></input>
         </div>
     );
 }
