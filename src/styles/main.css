@@ -21,3 +21,26 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+.lollyFlavourDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.colorPicker {
+    border-radius: 60%;
+    width: 40px;
+    height: 40px;
+}
+
+.colorPickerLabel{
+    margin: 20%;
+}
+
+.lollyForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
