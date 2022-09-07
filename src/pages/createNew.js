@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import Header from '../components/Header';
 import { Lolly } from '../components/Lolly';
 
@@ -6,6 +6,17 @@ export default function CreateNew() {
     const [colour1, setColour1] = useState("#d52358");
     const [colour2, setColour2] = useState("#e95946");
     const [colour3, setColour3] = useState("#deaa43");
+
+    const recipientNameRef = useRef();
+    const messageRef = useRef();
+    const senderNameRef = useRef();
+
+    const submitLollyForm = () => {
+        console.log("Click");
+        console.log("Colour1", colour1)
+        console.log("sender", senderNameRef.current.value);
+    }
+
     return (
         <div className="container">
             <Header />
@@ -41,17 +52,17 @@ export default function CreateNew() {
                         <label htmlFor='recipientName'>
                             To
                         </label>
-                        <input  type="text" name='recipientName' id='recipientName'/>
+                        <input  type="text" name='recipientName' id='recipientName' ref={recipientNameRef}/>
                         <label htmlFor='recipientName'>
                             Message
                         </label>
-                        <textarea rows="15" columns="30"/>
+                        <textarea rows="15" columns="30" ref={messageRef}/>
                         <label htmlFor='recipientName'>
                             From
                         </label>
-                        <input  type="text" name='recipientName' id='recipientName'/>
+                        <input  type="text" name='recipientName' id='recipientName' ref={senderNameRef}/>
                     </div>
-                    <input type='button' value='create'/>
+                    <input type='button' value='create' onClick={submitLollyForm}/>
                 </div>
             </div>
         </div>
