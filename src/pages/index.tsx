@@ -1,7 +1,7 @@
 import { navigate } from "gatsby";
 import React from "react"
 import Header from "../components/Header";
-import { Lolly } from '../components/Lolly';
+import {Lolly} from '../components/Lolly';
 
 const Home = () => {
 

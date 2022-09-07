@@ -11,6 +11,13 @@ body {
     justify-content: center;
 }
 
-.listLollies .lollipop {
+.listLollies .lollipop, .lollyFormDiv .lollipop{
     height: 300px;
+} 
+
+.lollyFormDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
