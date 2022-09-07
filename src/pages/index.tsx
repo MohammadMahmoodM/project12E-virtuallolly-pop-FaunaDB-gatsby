@@ -15,7 +15,7 @@ const Home = () => {
             <input type="button" value="Create New Lolly"
                 onClick={
                     ()=>{
-                        navigate("/createNew");
+                        navigate("/CreateNew");
                     }
                 }
             ></input>
