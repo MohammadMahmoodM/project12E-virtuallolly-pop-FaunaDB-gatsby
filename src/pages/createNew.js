@@ -1,70 +1,82 @@
 import React, { useState, useRef } from 'react'
 import Header from '../components/Header';
-import { Lolly } from '../components/Lolly';
+import Lolly from '../components/Lolly';
+import {gql,useQuery} from '@apollo/client'
+
+const GETDATA = gql`
+    {
+        hello
+    }
+`
 
 export default function CreateNew() {
-    const [colour1, setColour1] = useState("#d52358");
-    const [colour2, setColour2] = useState("#e95946");
-    const [colour3, setColour3] = useState("#deaa43");
-
+    const [color1, setColor1] = useState("#d52358");
+    const [color2, setColor2] = useState("#e95946");
+    const [color3, setColor3] = useState("#deaa43");
     const recipientNameRef = useRef();
     const messageRef = useRef();
-    const senderNameRef = useRef();
+    const senderRef = useRef();
+
+    const { data } = useQuery(GETDATA)
 
     const submitLollyForm = () => {
         console.log("Click");
-        console.log("Colour1", colour1)
-        console.log("sender", senderNameRef.current.value);
+        console.log("Color1", color1)
+        console.log("sender", senderRef.current.value);
     }
 
     return (
         <div className="container">
-            <Header />
+           {data && data.hello && <div>{data.hello}</div>}
+          <Header />
+    
             <div className="lollyFormDiv">
                 <div>
-                    <Lolly fillLollyTop={colour1} fillLollyMiddle={colour2} fillLollyBottom={colour3}></Lolly>
+                    <Lolly fillLollyTop={color1} fillLollyMiddle={color2} fillLollyBottom={color3} />
                 </div>
                 <div className="lollyFlavourDiv">
-                    <label htmlFor='flavourTop' className="colorPickerLabel">
-                        <input type="color" value={colour1} className='colorPicker' name="flavourTop" id="flavourTop" 
-                        onChange={(e) => {
-                            setColour1(e.target.value)
-                        }}
+                    <label htmlFor="flavourTop" className="colorPickerLabel">
+                        <input type="color"  value={color1} className="colorPicker" name="flavourTop" id="flavourTop"
+                            onChange={(e)=>{
+                                setColor1(e.target.value)
+                            }}
+                        
                         />
                     </label>
-                    <label htmlFor='flavourMiddle' className="colorPickerLabel">
-                        <input type="color" value={colour2} className='colorPicker' name="flavourMiddle" id="flavourMiddle"
-                        onChange={(e) => {
-                            setColour2(e.target.value)
-                        }}
-                         />
+                    
+                    <label htmlFor="flavourTop" className="colorPickerLabel">
+                        <input type="color"  value={color2} className="colorPicker" name="flavourTop" id="flavourTop"
+                            onChange={(e)=>{
+                                setColor2(e.target.value)
+                            }}
+                        />
                     </label>
-                    <label htmlFor='flavourBottom' className="colorPickerLabel">
-                        <input type="color" value={colour3} className='colorPicker' name="flavourBottom" id="flavourBottom" 
-                        onChange={(e) => {
-                            setColour3(e.target.value)
-                        }}
+                    <label htmlFor="flavourTop" className="colorPickerLabel">
+                        <input type="color"  value={color3} className="colorPicker" name="flavourTop" id="flavourTop"
+                            onChange={(e)=>{
+                                setColor3(e.target.value)
+                            }}
                         />
                     </label>
                 </div>
                 <div>
-                    <div className="lollyForm">
-                        <label htmlFor='recipientName'>
-                            To
+                    <div className="lollyFrom">
+                        <label htmlFor="recipientName">
+                            To                        
                         </label>
-                        <input  type="text" name='recipientName' id='recipientName' ref={recipientNameRef}/>
-                        <label htmlFor='recipientName'>
-                            Message
+                        <input type="text" name="recipientName" id="recipientName" ref={recipientNameRef}/>
+                        <label htmlFor="recipientName">
+                            Message                       
                         </label>
-                        <textarea rows="15" columns="30" ref={messageRef}/>
-                        <label htmlFor='recipientName'>
-                            From
+                        <textarea rows="15" columns="30" ref={messageRef} />
+                        <label htmlFor="recipientName">
+                            From                        
                         </label>
-                        <input  type="text" name='recipientName' id='recipientName' ref={senderNameRef}/>
+                        <input type="text" name="senderName" id="senderName" ref={senderRef}/>
                     </div>
-                    <input type='button' value='create' onClick={submitLollyForm}/>
+                    <input type="button" value="Create" onClick={submitLollyForm} />
                 </div>
             </div>
         </div>
-    )
-}
+      );
+    }
