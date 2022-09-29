@@ -18,7 +18,7 @@ const GET_LOLLY = gql`
     }
 `
 
-export default function ShowLolly({location}) {
+export default function displayLolly({location}) {
     console.log("component started -- ",location);
     const id = useQueryParam("id","123");
     
@@ -44,7 +44,7 @@ export default function ShowLolly({location}) {
                 <p>Your lolly is freezing. Share it with this link:</p>
                 <pre>{location.origin}/displayLolly/{data.getLolly.lollyPath}</pre>
                 <div style={{height: "200px"}}>
-                    <div id="recipient" className="recipient">
+                    <div>
                         {data.getLolly.recipientName}
                     </div>
                     <div id="message" className="message">
