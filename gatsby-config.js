@@ -5,7 +5,7 @@ module.exports = {
       options: {
         typeName: "Lolly",
         fieldName: "Lollies",
-        url: "http://localhost:8888/.netlify/functions/newLolly",
+        url: "https://comforting-dragon-48a767.netlify.app/.netlify/functions/newLolly",
       },
     },
     {
