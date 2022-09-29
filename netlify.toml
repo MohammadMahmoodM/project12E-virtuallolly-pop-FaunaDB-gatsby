@@ -2,28 +2,3 @@
   command = "yarn build"
   functions = "functions"
   publish = "public"
-
-## Settings for Netlify Dev
-## https://github.com/netlify/cli/blob/master/docs/netlify-dev.md#project-detection
-[dev]
-  command = "yarn start" # Command to start your dev server
-  #  port = 3000 # Port that the dev server will be listening on
-  #  publish = "dist" # Folder with the static content for _redirect file
-
-# resolve the "new" URL to a function
-[[redirects]]
-  from = "/new"
-  to = "/.netlify/functions/graphql-fauna"
-  status = 200
-
-# unfound lollies should proxy to the API directly
-[[redirects]]
-  from = "/lolly/*"
-  to = "/.netlify/functions/displayLolly?id=:splat"
-  status = 302
-
-# Use a Netlify Build plugin to enable incremental builds
-# [[plugins]]
-#   package = "./plugins/track-latest"
-
-## more info on configuring this file: https://www.netlify.com/docs/netlify-toml-reference/
