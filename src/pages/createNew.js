@@ -1,18 +1,27 @@
 import React, { useState, useRef } from 'react'
+import { navigate } from "gatsby";
 import Header from '../components/Header';
 import Lolly from '../components/Lolly';
-import {gql,useQuery, useMutation} from '@apollo/client'
+import {gql, useQuery, useMutation} from '@apollo/client';
 
-const GETDATA = gql`
+const GET_LOLLY = gql`
     {
-        hello
+        getLolly {
+            message,
+            senderName
+        }
     }
 `
 const createLollyMutation = gql`
     mutation createLolly($recipientName: String!, $message: String!, $senderName: String!, $flavourTop: String!, $flavourMiddle: String!, $flavourBottom: String!) {
         createLolly(recipientName : $recipientName, message: $message, senderName: $senderName, flavourTop:$flavourTop, flavourMiddle: $flavourMiddle, flavourBottom: $flavourBottom){
-            message
             lollyPath
+            senderName
+            message
+            recipientName
+            flavourTop
+            flavourMiddle
+            flavourBottom
         }
     }
 `
@@ -25,13 +34,16 @@ export default function CreateNew() {
     const messageRef = useRef();
     const senderRef = useRef();
 
-    //const { data } = useQuery(GETDATA)
+    const { data } = useQuery(GET_LOLLY)
+    console.log(data)
+
     const [createLolly] = useMutation(createLollyMutation)
 
     const submitLollyForm = async () => {
         console.log("Click");
         console.log("Color1", color1)
         console.log("sender", senderRef.current.value);
+        console.log("recipient", recipientNameRef.current.value);
 
         const result = await createLolly({
             variables : {
@@ -43,7 +55,8 @@ export default function CreateNew() {
                 flavourBottom : color3,
             }
         });
-        console.log("result from server = ", result)
+        console.log("result = ",result.data.createLolly);
+        navigate(`/displayLolly?id=${result.data.createLolly.lollyPath}`);
     }
 
     return (
