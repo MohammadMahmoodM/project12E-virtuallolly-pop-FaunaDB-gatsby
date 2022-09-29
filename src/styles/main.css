@@ -4,7 +4,12 @@ body {
 .container{
     width: 800px;
     margin-left: auto;
+    margin-right: auto;
 }
+.headerDiv {
+    font-family: Yellowtail,cursive;
+}
+
 .listLollies {
     display: flex;
     flex-direction: row;
@@ -41,6 +46,16 @@ body {
     border-radius: 90%;
     margin: 20px;
     overflow: hidden;
+}
+
+.recipient, .message, .from {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-family: Yellowtail,cursive;
+}
+
+.from {
+    margin-left: 50px;
 }
 
 .lollyForm{
