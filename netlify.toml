@@ -1,5 +1,5 @@
 [build]
-   command = "yarn build && cd functions/bookmarks && yarn install"
+   command = "yarn build && cd functions/newLolly && yarn install"
    publish = "public/"
    functions = "functions/"
    command = "netlify dev"
