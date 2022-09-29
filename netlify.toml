@@ -2,8 +2,3 @@
    command = "yarn build && cd functions/newLolly && yarn install"
    publish = "public/"
    functions = "functions/"
-   command = "netlify dev"
-
-[[redirects]]
-    from = "/displayLolly/*"
-    to = "/displayLolly?id=:splat"
