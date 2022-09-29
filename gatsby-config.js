@@ -5,16 +5,16 @@ module.exports = {
       options: {
         typeName: "Lolly",
         fieldName: "Lollies",
-        url: "https://comforting-dragon-48a767.netlify.app/.netlify/functions/newLolly",
+        url: "http://comforting-dragon-48a767.netlify.app/.netlify/functions/newLolly",
       },
     },
     {
       resolve: "gatsby-plugin-react-svg",
-      options: {
-        rule: {
-          include: /assets/ // See below to configure properly
-        }
-      }
+      // options: {
+      //   rule: {
+      //     include: /assets/ // See below to configure properly
+      //   }
+      // }
     },
   ]
 }
