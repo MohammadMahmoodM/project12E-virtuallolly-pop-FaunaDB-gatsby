@@ -64,3 +64,8 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+.displayInformation{
+    display: flex;
+    justify-content: center;
+}
