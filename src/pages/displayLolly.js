@@ -42,7 +42,7 @@ export default function displayLolly({location}) {
         <div>
             <div className="details" style={{textAlign:"left", border: "2px solid red", marginLeft:"30px"}}>
                 <p>Your lolly is freezing. Share it with this link:</p>
-                <pre>{location.origin}/displayLolly/{data.getLolly.lollyPath}</pre>
+                <pre>{location.origin}/displayLolly?id={data.getLolly.lollyPath}</pre>
                 <div style={{height: "200px"}}>
                     <div>
                         {data.getLolly.recipientName}
